@@ -749,14 +749,14 @@ namespace Analizador_Lexico
             //el metodo retornara la lista de token generada.
             Sintactico.lineasyntax = linea;
 
-           /* if (sin.EjecutarSintactico() == 1)
+            if (sin.EjecutarSintactico() == 1)
             {
                 Form1.compilacion = 1;
             }
             else
             {
                 Form1.compilacion = 0;
-            }*/
+            }
 
             return listaToken;
         }

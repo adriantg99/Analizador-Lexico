@@ -45,6 +45,7 @@ namespace Analizador_Lexico
 
                 if (Funcdef() == 1)
                 {
+                    //puntero++;
                     if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226 )//Abstract public private
                     {
                         puntero++;
@@ -53,7 +54,7 @@ namespace Analizador_Lexico
                             puntero++;
                             if (Funcdef() == 1)
                             {
-                                puntero++;
+                                
                                 if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226 )//Abstract public
                                 {
                                     puntero++;
@@ -79,217 +80,24 @@ namespace Analizador_Lexico
                         }
                         else
                         {
-
-                        }
-                        
-                    }
-                    Tokens.Clear();
-                    return 1;
-                }
-                else
-                {
-                    Tokens.Clear();
-                    return 0;
-                }
-            }
-        }
-
-        private int FuncdefClases()
-        {
-            if (puntero < Tokens.Count && Tokens[puntero] == 211)//def
-            {
-                puntero++;
-                if (Funcname() == 1)//Palabra
-                {
-                    if (puntero < Tokens.Count && Tokens[puntero] == 113) // (
-                    {
-                        puntero++;
-                        if (puntero < Tokens.Count && Tokens[puntero] == 114) // )
-                        {
-                            puntero++;
-                            if (puntero < Tokens.Count && Tokens[puntero] == 121) //:
-                            {
-                                puntero++;
-                                if (puntero < Tokens.Count && Tokens[puntero] == 222)//extends
-                                {
-                                    puntero++;
-                                    if (puntero < Tokens.Count && Tokens[puntero] == 100)//palabra
-                                    {
-                                        puntero++;
-                                        if (puntero < Tokens.Count && Tokens[puntero] == 113)//(
-                                        {
-                                            puntero++;
-                                            if (puntero < Tokens.Count && Tokens[puntero] == 114)//)
-                                            {
-                                                puntero++;
-                                                if (puntero < Tokens.Count && Tokens[puntero] == 117)//{
-                                                {
-                                                    puntero++;
-
-                                                    if (Suite() == 118)//{
-                                                    {
-                                                        puntero++;
-                                                        return 1;
-                                                    }
-
-                                                    else
-                                                    {
-                                                        errorSyntax.Codigo = 621;
-                                                        errorSyntax.MsjError = "Se esperaba un }";
-                                                        errorSyntax.Linea = 0;
-                                                        Lexico.listaError.Add(errorSyntax);
-
-                                                        return 0;
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    errorSyntax.Codigo = 609;
-                                                    errorSyntax.MsjError = "Se esperaba un {";
-                                                    errorSyntax.Linea = 0;
-                                                    Lexico.listaError.Add(errorSyntax);
-                                                    return 0;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                errorSyntax.Codigo = 603;
-                                                errorSyntax.MsjError = "Se esperaba un )";
-                                                errorSyntax.Linea = 0;
-                                                Lexico.listaError.Add(errorSyntax);
-                                                return 0;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            errorSyntax.Codigo = 602;
-                                            errorSyntax.MsjError = "Se esperaba un (";
-                                            errorSyntax.Linea = 0;
-                                            Lexico.listaError.Add(errorSyntax);
-                                            return 0;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        errorSyntax.Codigo = 601;
-                                        errorSyntax.MsjError = "Se esperaba un identificador";
-                                        errorSyntax.Linea = 0;
-                                        Lexico.listaError.Add(errorSyntax);
-                                        return 0;
-                                    }
-                                }
-
-                                if (puntero < Tokens.Count && Tokens[puntero] == 117) ///{
-                                {
-                                    puntero++;
-
-
-                                    if (Suite() == 118)
-                                    {
-                                        return 1;
-                                    }
-                                    else
-                                    {
-
-                                        errorSyntax.Codigo = 621;
-                                        errorSyntax.MsjError = "Se esperaba un }";
-                                        errorSyntax.Linea = 0;
-                                        Lexico.listaError.Add(errorSyntax);
-
-                                        return 0;
-                                    }
-                                }
-                                else
-                                {
-                                    errorSyntax.Codigo = 609;
-                                    errorSyntax.MsjError = "Se esperaba un {";
-                                    errorSyntax.Linea = 0;
-                                    Lexico.listaError.Add(errorSyntax);
-                                    return 0;
-                                }
-                            }
-                            else
-                            {
-                                errorSyntax.Codigo = 604;
-                                errorSyntax.MsjError = "Se esperaba un :";
-                                errorSyntax.Linea = 0;
-                                Lexico.listaError.Add(errorSyntax);
-                                return 0;
-                            }
-                        }
-                        else
-                        {
-                            errorSyntax.Codigo = 602;
-                            errorSyntax.MsjError = "Se esperaba un )";
-                            errorSyntax.Linea = 0;
-                            Lexico.listaError.Add(errorSyntax);
+                            Tokens.Clear();
                             return 0;
                         }
-
 
                     }
                     else
                     {
-                        errorSyntax.Codigo = 602;
-                        errorSyntax.MsjError = "Se esperaba un ( dasdasdas";
-                        errorSyntax.Linea = 0;
-                        Lexico.listaError.Add(errorSyntax);
-                        return 0;
+                        Tokens.Clear();
+                        return 1;
                     }
+                   
                 }
                 else
                 {
-                    errorSyntax.Codigo = 601;
-                    errorSyntax.MsjError = "Se esperaba un identificador";
-                    errorSyntax.Linea = 0;
-                    Lexico.listaError.Add(errorSyntax);
+                    Tokens.Clear();
                     return 0;
                 }
             }
-            else
-            {
-                return 0;
-            }
-        }
-
-        private int LibreriaImport()
-        {
-            do
-            {
-                if (puntero < Tokens.Count && Tokens[puntero] == 223)//import{
-                {
-                    puntero++;
-                    if (puntero < Tokens.Count && Tokens[puntero] == 100)//Cadena
-                    {
-                        puntero++;
-                        if (puntero < Tokens.Count && Tokens[puntero] == 120)//Punto y coma ;
-                        {
-                            puntero++;
-                            return 1;
-                        }
-                        else
-                        {
-                            puntero++;
-                            errorImport = 3;
-                            return 0;
-                        }
-                    }
-                    else
-                    {
-                        puntero++;
-                        errorImport = 2;
-                        return 0;
-                    }
-                }
-                else
-                {
-                    errorImport = 0;
-                    puntero++;
-                    return 0;
-                }
-            } while (true);
-            
-
         }
 
         private int Funcdef()
@@ -337,7 +145,7 @@ namespace Analizador_Lexico
                                                                 {
                                                                     puntero++;
 
-                                                                    if (Suite() == 118)
+                                                                    if (Suite() == 118)//}
                                                                     {
                                                                         puntero++;
                                                                         return 1;
@@ -867,7 +675,7 @@ namespace Analizador_Lexico
                                                     {
                                                         puntero++;
 
-                                                        if (Suite() == 118)
+                                                        if (Suite() == 118)//}
                                                         {
                                                             return 1;
                                                         }
