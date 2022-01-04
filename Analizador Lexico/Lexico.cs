@@ -568,6 +568,20 @@ namespace Analizador_Lexico
                     return TipoToken.PalabraReservada;
                 case 221:
                     return TipoToken.PalabraReservada;
+                case 222:
+                    return TipoToken.PalabraReservada;
+                case 223:
+                    return TipoToken.PalabraReservada;
+                case 224:
+                    return TipoToken.PalabraReservada;
+                case 225:
+                    return TipoToken.PalabraReservada;
+                case 226:
+                    return TipoToken.PalabraReservada;
+                case 227:
+                    return TipoToken.PalabraReservada;
+                case 228:
+                    return TipoToken.PalabraReservada;
 
                 default:
                     return TipoToken.PalabraReservada;

@@ -26,7 +26,6 @@ namespace Analizador_Lexico
 
 
         int puntero = 0;
-        int errorImport = 0;
         int maximo = Tokens.Count;
         Error errorSyntax = new Error() { Codigo = 0, MsjError = "", Tipo = TipoError.Sintactico, Linea = 0 };
 
@@ -45,31 +44,72 @@ namespace Analizador_Lexico
 
                 if (Funcdef() == 1)
                 {
-                    //puntero++;
-                    if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226 )//Abstract public private
+
+                    if(ParaOrientar() == 1)
                     {
-                        puntero++;
-                        if(Tokens[puntero] == 211)//def
+                        MessageBox.Show("llegue al final de la compilacion");
+                        Tokens.Clear();
+                        return 1;
+                    }
+                    else
+                    {
+                       puntero++;
+                       if (Funcdef() == 1)
+                        {
+                            Tokens.Clear();
+                            return 1;
+                        }
+                        else
+                        {
+                            Tokens.Clear();
+                            return 0;
+                        }
+                        #region Codigo inaccesible
+                        /*if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226)//Abstract public private
                         {
                             puntero++;
-                            if (Funcdef() == 1)
+                            if (Tokens[puntero] == 211)//def
                             {
-                                
-                                if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226 )//Abstract public
+                                puntero++;
+                                if (Funcdef() == 1)
                                 {
                                     puntero++;
-                                    if(Tokens[puntero] == 211)//def
+                                    if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226)//Abstract public
                                     {
-                                        if (Funcdef() == 1)
+                                        puntero++;
+                                        if (Tokens[puntero] == 211)//def
+                                        {
+                                            if (Funcdef() == 1)
+                                            {
+                                                Tokens.Clear();
+                                                return 1;
+                                            }
+                                            else
+                                            {
+                                                Tokens.Clear();
+                                                return 0;
+                                            }
+                                        }
+                                        else
                                         {
                                             Tokens.Clear();
-                                            return 1;
+                                            return 0;
                                         }
+
                                     }
-                                    
+                                    else
+                                    {
+                                        Tokens.Clear();
+                                        return 1;
+                                    }
+
                                 }
-                                Tokens.Clear();
-                                return 1;
+                                else
+                                {
+                                    Tokens.Clear();
+                                    return 0;
+                                }
+
                             }
                             else
                             {
@@ -81,16 +121,13 @@ namespace Analizador_Lexico
                         else
                         {
                             Tokens.Clear();
-                            return 0;
-                        }
+                            return 1;
+                        }*/
+                        #endregion
+                    }
 
-                    }
-                    else
-                    {
-                        Tokens.Clear();
-                        return 1;
-                    }
-                   
+
+
                 }
                 else
                 {
@@ -98,6 +135,21 @@ namespace Analizador_Lexico
                     return 0;
                 }
             }
+        }
+
+        private int ParaOrientar()
+        {
+            int length = Tokens.Count - 1;//Ancho total de la lista para verificar si hay algo despues del cierre
+            if (puntero >= length)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+
         }
 
         private int Funcdef()
