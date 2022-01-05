@@ -56,7 +56,7 @@ namespace Analizador_Lexico
             this.archivoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1288, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1313, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,7 +101,7 @@ namespace Analizador_Lexico
             // 
             // btnCompilar
             // 
-            this.btnCompilar.Location = new System.Drawing.Point(459, 774);
+            this.btnCompilar.Location = new System.Drawing.Point(474, 557);
             this.btnCompilar.Name = "btnCompilar";
             this.btnCompilar.Size = new System.Drawing.Size(216, 40);
             this.btnCompilar.TabIndex = 4;
@@ -164,7 +164,7 @@ namespace Analizador_Lexico
             this.ftextCode.Paddings = new System.Windows.Forms.Padding(0);
             this.ftextCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.ftextCode.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("ftextCode.ServiceColors")));
-            this.ftextCode.Size = new System.Drawing.Size(445, 637);
+            this.ftextCode.Size = new System.Drawing.Size(437, 445);
             this.ftextCode.TabIndex = 8;
             this.ftextCode.Zoom = 100;
             // 
@@ -173,7 +173,7 @@ namespace Analizador_Lexico
             this.dgvListToken.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListToken.Location = new System.Drawing.Point(474, 81);
             this.dgvListToken.Name = "dgvListToken";
-            this.dgvListToken.Size = new System.Drawing.Size(392, 637);
+            this.dgvListToken.Size = new System.Drawing.Size(383, 445);
             this.dgvListToken.TabIndex = 9;
             // 
             // dgvList
@@ -181,14 +181,14 @@ namespace Analizador_Lexico
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Location = new System.Drawing.Point(882, 81);
             this.dgvList.Name = "dgvList";
-            this.dgvList.Size = new System.Drawing.Size(392, 637);
+            this.dgvList.Size = new System.Drawing.Size(386, 445);
             this.dgvList.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1288, 881);
+            this.ClientSize = new System.Drawing.Size(1313, 632);
             this.Controls.Add(this.dgvList);
             this.Controls.Add(this.dgvListToken);
             this.Controls.Add(this.ftextCode);
