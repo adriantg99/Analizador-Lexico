@@ -64,66 +64,6 @@ namespace Analizador_Lexico
                             Tokens.Clear();
                             return 0;
                         }
-                        #region Codigo inaccesible
-                        /*if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226)//Abstract public private
-                        {
-                            puntero++;
-                            if (Tokens[puntero] == 211)//def
-                            {
-                                puntero++;
-                                if (Funcdef() == 1)
-                                {
-                                    puntero++;
-                                    if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226)//Abstract public
-                                    {
-                                        puntero++;
-                                        if (Tokens[puntero] == 211)//def
-                                        {
-                                            if (Funcdef() == 1)
-                                            {
-                                                Tokens.Clear();
-                                                return 1;
-                                            }
-                                            else
-                                            {
-                                                Tokens.Clear();
-                                                return 0;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            Tokens.Clear();
-                                            return 0;
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        Tokens.Clear();
-                                        return 1;
-                                    }
-
-                                }
-                                else
-                                {
-                                    Tokens.Clear();
-                                    return 0;
-                                }
-
-                            }
-                            else
-                            {
-                                Tokens.Clear();
-                                return 0;
-                            }
-
-                        }
-                        else
-                        {
-                            Tokens.Clear();
-                            return 1;
-                        }*/
-                        #endregion
                     }
 
 
@@ -158,13 +98,13 @@ namespace Analizador_Lexico
             if (puntero < Tokens.Count && Tokens[puntero] == 223)//import
             {
                 puntero++;
-                if (puntero < Tokens.Count && Tokens[puntero] == 100)//Cadena
+                if (puntero < Tokens.Count && Tokens[puntero] == 100)//ID
                 {
                     puntero++;
                     if (puntero < Tokens.Count && Tokens[puntero] == 120)//Punto y coma ;
                     {
                         puntero++;
-                        if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226)//Abstract y public
+                        if (puntero < Tokens.Count && Tokens[puntero] == 225 || Tokens[puntero] == 226)//Abstract || public
                         {
                             puntero++;
                             if (puntero < Tokens.Count && Tokens[puntero] == 211) // def
@@ -918,7 +858,7 @@ namespace Analizador_Lexico
                         }
                         else
                         {
-                            if (Tokens[puntero] == 118)
+                            if (Tokens[puntero] == 118)//}
                             {
                                 return 118;
 
@@ -2285,7 +2225,6 @@ namespace Analizador_Lexico
                         if (Tokens[puntero] == 126 || Tokens[puntero] == 201 || Tokens[puntero] == 129 || Tokens[puntero] == 200) //or | and &
                         {
                             puntero++;
-
                             Asignacion_operador();
                         }
                         else
@@ -2410,7 +2349,7 @@ namespace Analizador_Lexico
                         || Tokens[puntero] == 110
                         || Tokens[puntero] == 109
                         || Tokens[puntero] == 128
-                        || Tokens[puntero] == 112) //< > >= <= <> !=    
+                        || Tokens[puntero] == 112) //< > >= <= <> != =    
                     {
                         puntero++;
 
@@ -2441,6 +2380,25 @@ namespace Analizador_Lexico
                         {
                             break;
                         }
+
+                        if(Tokens[puntero] == 123)//=
+                        {
+                            if (Tokens[puntero] == 101 || Tokens[puntero] == 102 || Tokens[puntero] == 122 || Tokens[puntero] == 100 || Tokens[puntero] == 228)// numero, decimal, string, id
+                            {
+                                puntero++;
+                                return 1;
+                            }
+                            else
+                            {
+                                errorSyntax.Codigo = 614;
+                                errorSyntax.MsjError = "Se esperaba un numero o una cadena";
+                                errorSyntax.Linea = 0;
+                                Lexico.listaError.Add(errorSyntax);
+                                break;
+                            }
+                        }
+
+
                         if (Tokens[puntero] == 101 || Tokens[puntero] == 102 || Tokens[puntero] == 122 || Tokens[puntero] == 100 || Tokens[puntero] == 228)// numero, decimal, string, id
                         {
                             puntero++;                         
